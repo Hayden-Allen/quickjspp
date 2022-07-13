@@ -24,7 +24,7 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
-#include <getopt.h>
+//rsr #include <getopt.h>
 #include <stdarg.h>
 #include <string.h>
 #include <inttypes.h>
