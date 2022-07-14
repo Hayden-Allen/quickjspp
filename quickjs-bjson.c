@@ -56,8 +56,9 @@ static JSValue js_bjson_read(JSContext *ctx, JSValueConst this_val,
   flags = 0;
   if (argc > 3 && JS_ToBool(ctx, argv[3]))
     flags |= JS_READ_OBJ_REFERENCE;
-
-  if (cb != JS_UNINITIALIZED) {
+ JSValue jsu = JS_UNINITIALIZED;
+  if (cb.u.int32 != jsu.u.int32) {
+//     if (cb == JS_UNINITIALIZED)
     cb = JS_DupValue(ctx,cb);
     size_t rest = 0;
     uint8_t *sbuf = buf;
@@ -73,7 +74,9 @@ static JSValue js_bjson_read(JSContext *ctx, JSValueConst this_val,
         JS_FreeValue(ctx, cb);
         return rv;
       }
-      if (rv == JS_FALSE)
+ JSValue jsf = JS_FALSE;
+  if (rv.u.int32 != jsf.u.int32) 
+//      if (rv == JS_FALSE)
         break;
     } while (rest);
     JS_FreeValue(ctx, cb);

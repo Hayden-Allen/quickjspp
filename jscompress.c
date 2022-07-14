@@ -24,7 +24,7 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
-//rsr #include <getopt.h>
+#include <getopt.h>
 #include <stdarg.h>
 #include <string.h>
 #include <inttypes.h>
@@ -214,33 +214,43 @@ static int hex_to_num(int ch)
         return -1;
 }
 
+void token_add(JSToken* tokc,char ch)
+{       tok_add_ch(tokc, ch);
+        nextch();
+        while ((ch >= 'a' && ch <= 'z') ||
+               (ch >= 'A' && ch <= 'Z') ||
+               (ch >= '0' && ch <= '9') ||
+               (ch == '_' || ch == '$')) {
+            tok_add_ch(tokc, ch);
+            nextch();
+        }
+        tok_add_ch(tokc, '\0');
+        tokc->tok = TOK_IDENT;
+}
+
+int is_token_of(char c,char from,char to)
+{   return (c >= from) && (c <= to);
+}
+
 void next(void)
 {
 again:    
     tok_reset(&tokc);
     tokc.line_num = line_num;
     tokc.lines = 0;
+    if( ch == '_'
+    ||  ch == '$'
+    || is_token_of(ch,'a','z')
+    || is_token_of(ch,'A','Z') )
+    {   token_add(&tokc,ch);
+        if (skip_mask & 1)
+            goto again;
+    }
     switch(ch) {
     case EOF:
         tokc.tok = TOK_EOF;
         if (skip_mask)
             error("missing #endif");
-        break;
-    case 'a' ... 'z':
-    case 'A' ... 'Z':
-    case '_':
-    case '$':
-        tok_add_ch(&tokc, ch);
-        nextch();
-        while ((ch >= 'a' && ch <= 'z') ||
-               (ch >= 'A' && ch <= 'Z') ||
-               (ch >= '0' && ch <= '9') ||
-               (ch == '_' || ch == '$')) {
-            tok_add_ch(&tokc, ch);
-            nextch();
-        }
-        tok_add_ch(&tokc, '\0');
-        tokc.tok = TOK_IDENT;
         break;
     case '.':
         nextch();
@@ -269,7 +279,15 @@ again:
         }
         goto has_digit;
 
-    case '1' ... '9':
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
         tok_add_ch(&tokc, ch);
         nextch();
     has_digit:
@@ -356,7 +374,14 @@ again:
                         tok_add_ch(&tokc, ch);
                         nextch();
                         break;
-                    case '0' ... '7':
+                    case '0':
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
                         n = 0;
                         while (ch >= '0' && ch <= '7') {
                             n = n * 8 + (ch - '0');

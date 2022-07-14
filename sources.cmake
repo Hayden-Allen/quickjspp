@@ -14,16 +14,10 @@ quickjs-version.h
 quickjs.h
 unicode_gen_def.h
 cutils.c
-jscompress.c
 libbf.c
-libregexp.c
 libunicode.c
-qjs.c
-qjsc.c
 qjscalc.c
 quickjs-bjson.c
 quickjs-libc.c
 quickjs.c
 repl.c
-run-test262.c
-unicode_gen.c
