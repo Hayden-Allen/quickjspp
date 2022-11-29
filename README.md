@@ -1,6 +1,27 @@
+# QuickJS Javascript Engine - Cmake Version
 
+* Date: November 29th, 2022
+* Purpose: JavaScript engine, command-line interpreter and stand-alone executable compiler
+* Maintainer: Robin Rowe robin.rowe@cinepaint.org
+* Platforms: Windows, Linux, MacOS, FreeBSD
+* Language: C
+* Build System: cmake
+* Dependencies: libunistd (needed for Windows only)
 
-# QuickJS Javascript Engine 
+## 2.2 Quick start
+
+qjs is the command line interpreter (Read-Eval-Print Loop) and/or expressions as arguments to execute them:
+
+    ./qjs examples/hello.js
+
+qjsc is the command line compiler, generates a hello executable with no external dependency:
+
+./qjsc -o hello examples/hello.js
+    ./hello
+
+Documentation in doc/quickjs.pdf or [doc/quickjs.html](doc/quickjs.html).
+
+## QuickJS Javascript Engine - Premake Windows Previous Version
 
 Authors: Fabrice Bellard and Charlie Gordon
 
@@ -16,44 +37,31 @@ This version is
   * [JSX](doc/jsx.md) - built-in [facebook::JSX](https://facebook.github.io/jsx/) support with Sciter specific extras.
   * Built-in [Persistence](storage/doc/README.md) - you can think of it as local MongoDB (NoSQL) DB embedded into the language. Pretty small, adds just 70kb into binary.
     Persistence is based on [DyBASE of Konstantin Knizhnik](http://garret.ru/)
-
-The main documentation is in doc/quickjs.pdf or [doc/quickjs.html](doc/quickjs.html).
-
-# Build using Microsoft Visual Studio (2017 or 2019)
-
-Prerequisite: **premake5** - [download](https://premake.github.io/download.html) and install it.
-
-Then go to /win folder and run premake-vs2017.bat or premake-vs2019.bat . 
-
-It will generate .build/vs2017/quickjs-msvc.sln and open it in Microsoft Visual Studio.
-
-Press F5 to compile it and run qjs - interactive JS command line application.
-
-# Premake5 and build on other platforms/compilers/ide  
-
-Supported premake options:
-
-* ```--jsx``` - include JSX support;
-* ```--storage``` - include Persistent Storage support;
-
-Supported targets (these are built into [Premake](https://premake.github.io/) itself):
-
-* vs2017 - MS Visual Studio 2017
-* vs2019 - MS Visual Studio 2019
-* gmake2 - gmake files
-* etc...
-
-Few examples of other possible configurations: 
-```bat
-premake5 vs2019 --jsx --storage
-premake5 codeblocks --cc=gcc --jsx --storage
-premake5 gmake2 --cc=gcc --jsx --storage
-premake5 gmake2 --cc=clang --jsx --storage
-premake5 gmake2 --cc=clang --jsx --storage
-premake5 xcode4 --jsx --storage
+    
+## Open Source License
 ```
-
-
-
-
-
+/*
+ * C utilities
+ * 
+ * Copyright (c) 2017 Fabrice Bellard
+ * Copyright (c) 2018 Charlie Gordon
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+```
