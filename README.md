@@ -1,11 +1,12 @@
 # QuickJS Javascript Engine - Cmake Version
 
-Date: November 29th, 2022
-Maintainer: Robin Rowe robin.rowe@cinepaint.org
-Platforms: Windows, Linux, MacOS, FreeBSD
-Language: C
-Build System: cmake
-Dependencies: libunistd (needed for Windows only)
+* Date: November 29th, 2022
+* Purpose: JavaScript engine, command-line interpreter and stand-alone executable compiler
+* Maintainer: Robin Rowe robin.rowe@cinepaint.org
+* Platforms: Windows, Linux, MacOS, FreeBSD
+* Language: C
+* Build System: cmake
+* Dependencies: libunistd (needed for Windows only)
 
 ## 2.2 Quick start
 
@@ -38,7 +39,7 @@ This version is
     Persistence is based on [DyBASE of Konstantin Knizhnik](http://garret.ru/)
     
 ## Open Source License
-
+```
 /*
  * C utilities
  * 
@@ -63,4 +64,4 @@ This version is
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
+```
