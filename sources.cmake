@@ -15,6 +15,7 @@ quickjs.h
 unicode_gen_def.h
 cutils.c
 libbf.c
+libregexp.c
 libunicode.c
 qjscalc.c
 quickjs-bjson.c

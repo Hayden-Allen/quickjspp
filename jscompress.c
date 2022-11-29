@@ -32,6 +32,9 @@
 
 #include "cutils.h"
 
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4996)
+
 typedef struct JSToken {
     int tok;
     char buf[20];

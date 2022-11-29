@@ -31,6 +31,7 @@
 #include <time.h>
 #include <fenv.h>
 #include <math.h>
+#include <unistd.h>
 #if defined(__APPLE__)
 #include <malloc/malloc.h>
 #include <sys/time.h>
@@ -50,6 +51,14 @@
 #ifdef CONFIG_BIGNUM
 #include "libbf.h"
 #endif
+
+#pragma warning(disable : 4146) // unary minus operator applied to unsigned type
+#pragma warning(disable : 4334) // '<<': result of 32-bit shift implicitly converted to 64 bits
+
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4267)
+#pragma warning(disable : 4996)
 
 #define OPTIMIZE         1
 #define SHORT_OPCODES    1
@@ -3227,7 +3236,7 @@ JS_BOOL JS_AtomIsSymbol(JSContext *ctx,JSAtom atom)
   else {
     JSRuntime *rt = ctx->rt;
     JSAtomStruct *p;
-    uint32_t val;
+//    uint32_t val;
 
     assert(atom < rt->atom_size);
     p = rt->atom_array[atom];

@@ -35,6 +35,10 @@
 #include "cutils.h"
 #include "libbf.h"
 
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4146)
+
 /* enable it to check the multiplication result */
 //#define USE_MUL_CHECK
 /* enable it to use FFT/NTT multiplication */

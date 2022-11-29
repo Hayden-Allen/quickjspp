@@ -29,6 +29,10 @@
 
 #include "cutils.h"
 
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4267)
+
 #ifdef _MSC_VER
 
  // From: https://stackoverflow.com/a/26085827

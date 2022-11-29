@@ -34,6 +34,7 @@
 #include <signal.h>
 #include <limits.h>
 #include <sys/stat.h>
+#include <unistd.h>
 #if defined(_WIN32)
   #include <windows.h>
   #include <conio.h>
@@ -80,6 +81,11 @@ typedef sig_t sighandler_t;
 #include "cutils.h"
 #include "list.h"
 #include "quickjs-libc.h"
+
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4267)
+#pragma warning(disable : 4996)
 
 /* TODO:
    - add socket calls
@@ -632,28 +638,6 @@ static JSValue js_std_getenv(JSContext *ctx, JSValueConst this_val,
     else
         return JS_NewString(ctx, str);
 }
-
-#if defined(_WIN32)
-static void setenv(const char *name, const char *value, int overwrite)
-{
-    char *str;
-    size_t name_len, value_len;
-    name_len = strlen(name);
-    value_len = strlen(value);
-    str = malloc(name_len + 1 + value_len + 1);
-    memcpy(str, name, name_len);
-    str[name_len] = '=';
-    memcpy(str + name_len + 1, value, value_len);
-    str[name_len + 1 + value_len] = '\0';
-    _putenv(str);
-    free(str);
-}
-
-static void unsetenv(const char *name)
-{
-    setenv(name, "", TRUE);
-}
-#endif /* _WIN32 */
 
 static JSValue js_std_setenv(JSContext *ctx, JSValueConst this_val,
                            int argc, JSValueConst *argv)
@@ -2423,7 +2407,8 @@ static JSValue js_os_mkdir(JSContext *ctx, JSValueConst this_val,
     path = JS_ToCString(ctx, argv[0]);
     if (!path)
         return JS_EXCEPTION;
-#if defined(_WIN32)
+#if 0
+// defined(_WIN32)
     (void)mode;
     ret = js_get_errno(mkdir(path));
 #else

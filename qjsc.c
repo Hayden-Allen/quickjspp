@@ -28,7 +28,9 @@
 #include <string.h>
 #include <assert.h>
 #include <errno.h>
-#if !defined(_WIN32)
+#include <unistd.h>
+#if 1
+//!defined(_WIN32)
 #include <sys/wait.h>
   #include <unistd.h>
 #else
@@ -38,6 +40,10 @@
 #include "cutils.h"
 #include "quickjs-libc.h"
 #include "quickjs-version.h"
+
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4996)
+#pragma warning(disable : 4267)
 
 typedef struct {
     char *name;
@@ -484,7 +490,7 @@ typedef enum {
     OUTPUT_EXECUTABLE,
 } OutputTypeEnum;
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
     int c, i, verbose;
     const char *out_filename, *cname;

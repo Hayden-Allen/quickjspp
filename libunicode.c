@@ -31,6 +31,9 @@
 #include "libunicode.h"
 #include "libunicode-table.h"
 
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4267)
+
 enum {
     RUN_TYPE_U,
     RUN_TYPE_L,

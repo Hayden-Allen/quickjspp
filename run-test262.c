@@ -39,6 +39,10 @@
 #include "quickjs-libc.h"
 #include "quickjs-version.h"
 
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4267)
+#pragma warning(disable : 4996)
+
 /* enable test262 thread support to test SharedArrayBuffer and Atomics */
 #define CONFIG_AGENT
 

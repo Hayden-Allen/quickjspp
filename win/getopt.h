@@ -59,7 +59,6 @@
 #pragma warning(disable:4996)
 
 #define __GETOPT_H__
-
 /* All the headers include this file. */
 #include <crtdefs.h>
 #include <errno.h>

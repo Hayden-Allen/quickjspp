@@ -33,6 +33,11 @@
 
 #include "cutils.h"
 
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4267)
+#pragma warning(disable : 4996)
+
 /* define it to be able to test unicode.c */
 //#define USE_TEST
 /* profile tests */

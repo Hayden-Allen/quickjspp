@@ -46,6 +46,8 @@
 #endif
 #include "quickjs-version.h"
 
+#pragma warning(disable : 4267)
+
 extern const uint8_t qjsc_repl[];
 extern const uint32_t qjsc_repl_size;
 #ifdef CONFIG_BIGNUM
