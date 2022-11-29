@@ -19,7 +19,24 @@ qjsc is the command line compiler, generates a hello executable with no external
 ./qjsc -o hello examples/hello.js
     ./hello
 
-Documentation in doc/quickjs.pdf or [doc/quickjs.html](doc/quickjs.html).
+jscompress is a Javascript compressor:
+```
+jscompress [options] filename
+Javascript compressor
+
+-h          print this help
+-n          do not compress spaces
+-H          keep the first comment
+-c          compress to file
+-C name     compress to C source ('name' is the variable name)
+-D symbol   define preprocessor symbol
+-U symbol   undefine preprocessor symbol
+-o outfile  set the output filename (default=out.js)
+```
+
+## Documentation
+
+doc/quickjs.pdf or [doc/quickjs.html](doc/quickjs.html).
 
 ## QuickJS Javascript Engine - Premake Windows Previous Version
 
