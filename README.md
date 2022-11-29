@@ -16,7 +16,7 @@ qjs is the command line interpreter (Read-Eval-Print Loop) and/or expressions as
 
 qjsc is the command line compiler, generates a hello executable with no external dependency:
 
-./qjsc -o hello examples/hello.js
+    ./qjsc -o hello examples/hello.js
     ./hello
 
 jscompress is a Javascript compressor:
